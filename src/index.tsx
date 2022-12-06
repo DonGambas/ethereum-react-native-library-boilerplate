@@ -1,22 +1,17 @@
-import { NativeModules, Platform } from 'react-native';
+import 'react-native-get-random-values';
+import '@ethersproject/shims';
 
-const LINKING_ERROR =
-  `The package 'web3-test-lib' doesn't seem to be linked. Make sure: \n\n` +
-  Platform.select({ ios: "- You have run 'pod install'\n", default: '' }) +
-  '- You rebuilt the app after installing the package\n' +
-  '- You are not using Expo Go\n';
+import { Wallet } from 'ethers';
+import Web3 from 'web3';
 
-const Web3TestLib = NativeModules.Web3TestLib
-  ? NativeModules.Web3TestLib
-  : new Proxy(
-      {},
-      {
-        get() {
-          throw new Error(LINKING_ERROR);
-        },
-      }
-    );
+export function createAddress(): string {
+  const web3 = new Web3('http://localhost:8545');
+  const newWallet = web3.eth.accounts.wallet.create(1);
+  const newAccount = newWallet[0];
+  return newAccount?.address || 'wallet not created';
+}
 
-export function multiply(a: number, b: number): Promise<number> {
-  return Web3TestLib.multiply(a, b);
+export function createAddressEthers(): string {
+  const newWallet = Wallet.createRandom();
+  return newWallet.address;
 }

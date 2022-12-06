@@ -1,4 +1,6 @@
-# web3-test-lib
+# ethereum react native library boilerplate
+
+simple boilerplate of a react native library that uses both web3js and etherjs. Can use either one, showing both for example purposes
 
 test using web3 in react native library
 
