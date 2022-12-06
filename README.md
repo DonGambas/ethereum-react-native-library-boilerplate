@@ -13,11 +13,12 @@ npm install web3-test-lib
 ## Usage
 
 ```js
-import { multiply } from 'web3-test-lib';
+import { createAddress, createAddressEthers } from 'web3-test-lib';
 
 // ...
 
-const result = await multiply(3, 7);
+const web3Address = createAddress();
+const ethersAddress = createAddressEthers();
 ```
 
 ## Contributing
