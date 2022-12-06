@@ -166,7 +166,6 @@
   },
   "dependencies": {
     "@ethersproject/shims": "^5.7.0",
-    "@opengsn/provider": "^3.0.0-beta.1",
     "ethers": "^5.7.2",
     "web3": "^1.8.1"
   }
